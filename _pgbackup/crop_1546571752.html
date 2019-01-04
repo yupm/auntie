@@ -10,7 +10,7 @@
         <!-- Bootstrap core CSS -->         
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet"> 
         <!-- Custom styles for this template -->         
-        <link href="auntie.css" rel="stylesheet"> 
+        <link href="offcanvas.css" rel="stylesheet"> 
     </head>     
     <body class="bg-light"> 
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-danger"> 
@@ -58,25 +58,29 @@
         <div class="container"> 
             <div class="row" style="height: 30px;"></div>             
         </div>         
-        <main role="main" class="container" style="height: 100vh;"> 
-            <div class="row d-flex justify-content-center"> 
-                <form style="width: 600px;"> 
-                    <div class="form-group"> 
-                        <label for="exampleInputEmail1">Email address</label>                         
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/> 
-                    </div>                     
-                    <div class="form-group"> 
-                        <label for="exampleInputPassword1">Password</label>                         
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/> 
-                    </div>                     
-                    <div class="form-check"> 
-                        <label class="form-check-label"> 
-                            <input type="checkbox" class="form-check-input">Remember me
-                        </label>                         
-                    </div>                     
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>                     
-                </form>                 
-            </div>             
+        <main role="main" class="container" style="height: 100vh;" href="/login">
+            <div class="col-sm-6 offset-sm-3">
+                <h1><br>Upload item</h1>
+                <form action="/cloud/post" method="post" enctype="multipart/form-data">
+                    <div class="form-group">Listing Title&nbsp; &nbsp;&nbsp;
+                        <br>
+                        <input type="text" class="form-control" name="topics">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" rows="6" class="form-control" name="description"></textarea>
+                    </div>
+                    <div>
+                        <input type="file" id="file" name="file" accept="image/png, image/jpeg">
+                    </div>
+                    <div class="form-group">Tags
+                        <br>
+                        <input type="text" class="form-control" name="topics">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-danger">Upload!</button>
+                </form>
+                <hr>
+            </div>
         </main>         
         <footer class="my-5 pt-5 text-muted text-center text-small"> 
             <p class="mb-1">&copy; 2019 Auntie.cc</p> 

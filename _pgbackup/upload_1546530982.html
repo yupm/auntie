@@ -10,7 +10,13 @@
         <!-- Bootstrap core CSS -->         
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet"> 
         <!-- Custom styles for this template -->         
-        <link href="auntie.css" rel="stylesheet"> 
+        <link href="offcanvas.css" rel="stylesheet"> 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css" rel="stylesheet"> 
+        <script src="css/croppie.min.js"></script>
+        <style>#my-image,
+#use {
+    display: none;
+}</style>
     </head>     
     <body class="bg-light"> 
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-danger"> 
@@ -33,23 +39,23 @@
                 </form>                 
                 <ul class="navbar-nav ml-auto"> 
                     <li class="nav-item"> 
-                        <a class="nav-link" href="/deals">Deals</a> 
+                        <a class="nav-link" href="#">Deals</a> 
                     </li>                     
                     <li class="nav-item"> 
                         <a class="nav-link" href="#">Events</a> 
                     </li>                     
                     <li class="nav-item"> 
-                        <a class="nav-link" href="/events">Register</a> 
+                        <a class="nav-link" href="#">Register</a> 
                     </li>                     
                     <li class="nav-item"> 
-                        <a class="nav-link" href="/events">Login</a> 
+                        <a class="nav-link" href="#">Login</a> 
                     </li>                     
                     <li class="nav-item dropdown"> 
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Controls</a> 
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a> 
                         <div class="dropdown-menu" aria-labelledby="dropdown01"> 
-                            <a class="dropdown-item" href="#">Profile</a> 
-                            <a class="dropdown-item" href="#">Settings</a> 
-                            <a class="dropdown-item" href="#">Sign out</a> 
+                            <a class="dropdown-item" href="#">Action</a> 
+                            <a class="dropdown-item" href="#">Another action</a> 
+                            <a class="dropdown-item" href="#">Something else here</a> 
                         </div>                         
                     </li>                     
                 </ul>                 
@@ -58,25 +64,37 @@
         <div class="container"> 
             <div class="row" style="height: 30px;"></div>             
         </div>         
-        <main role="main" class="container" style="height: 100vh;"> 
-            <div class="row d-flex justify-content-center"> 
-                <form style="width: 600px;"> 
-                    <div class="form-group"> 
-                        <label for="exampleInputEmail1">Email address</label>                         
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/> 
-                    </div>                     
-                    <div class="form-group"> 
-                        <label for="exampleInputPassword1">Password</label>                         
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/> 
-                    </div>                     
-                    <div class="form-check"> 
-                        <label class="form-check-label"> 
-                            <input type="checkbox" class="form-check-input">Remember me
-                        </label>                         
-                    </div>                     
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>                     
-                </form>                 
-            </div>             
+        <main role="main" class="container">
+            <div class="col-sm-6 offset-sm-3">
+                <h1><br>Upload item</h1>
+                <form action="/cloud/post" method="post" enctype="multipart/form-data">
+                    <div class="form-group">isting Title&nbsp; &nbsp;&nbsp;
+                        <br>
+                        <input type="text" class="form-control" name="topics">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" rows="6" class="form-control" name="description"></textarea>
+                    </div>
+                    <div>
+                        <input type="file" id="file" name="file" accept="image/png, image/jpeg">
+                    </div>
+                    <div class="form-group">Tags
+                        <br>
+                        <input type="text" class="form-control" name="topics">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-danger">Upload!</button>
+                </form>
+                <div style="height: 300px; width: 300px;">
+                    <form id="form1" runat="server">
+                        <input type='file' id="imgInp"/>
+                        <img id="my-image" src="#"/>
+                    </form>
+                    <button id="use">Upload</button>
+                    <img id="result" src="">
+                </div>
+                <hr>
+            </div>
         </main>         
         <footer class="my-5 pt-5 text-muted text-center text-small"> 
             <p class="mb-1">&copy; 2019 Auntie.cc</p> 
@@ -103,7 +121,36 @@
             $('[data-toggle="offcanvas"]').on('click', function () {
                 $('.offcanvas-collapse').toggleClass('open');
             });
-        });
+        });}
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#my-image').attr('src', e.target.result);
+      var resize = new Croppie($('#my-image')[0], {
+        viewport: { width: 100, height: 100 },
+        boundary: { width: 300, height: 300 },
+        showZoomer: false,
+        enableResize: true,
+        enableOrientation: true
+      });
+      $('#use').fadeIn();
+      $('#use').on('click', function() {
+        resize.result('base64').then(function(dataImg) {
+          var data = [{ image: dataImg }, { name: 'myimgage.jpg' }];
+          // use ajax to send data to php
+          $('#result').attr('src', dataImg);
+        })
+      })
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+
     </script>         
     </body>     
 </html>

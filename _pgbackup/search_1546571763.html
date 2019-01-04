@@ -10,7 +10,7 @@
         <!-- Bootstrap core CSS -->         
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet"> 
         <!-- Custom styles for this template -->         
-        <link href="auntie.css" rel="stylesheet"> 
+        <link href="offcanvas.css" rel="stylesheet"> 
     </head>     
     <body class="bg-light"> 
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-danger"> 
@@ -58,40 +58,36 @@
         <div class="container"> 
             <div class="row" style="height: 30px;"></div>             
         </div>         
-        <main role="main" class="container" style="height: 100vh;"> 
-            <div class="row d-flex justify-content-center"> 
-                <form style="width: 600px;"> 
-                    <div class="form-group"> 
-                        <label for="exampleInputEmail1">Email address</label>                         
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/> 
+        <main role="main" class="container"> 
+            <div class="row"> 
+                <div class="col-lg-9 col-md-12"> 
+                    <div class="card flex-md-row box-shadow h-md-250 flex-row mb-2"> 
+                        <div style="width: auto; height: auto; max-height: 160px; max-width: 160px; vertical-align: middle; min-width: 160px; min-height: 160px;" class="d-flex align-items-center"> 
+                            <img src="https://images.unsplash.com/photo-1543363136-3fdb62e11be5?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjIwOTIyfQ" alt="Card image cap" class="img-fluid"> 
+                        </div>                         
+                        <div class="card-body flex-column d-flex align-items-start"> 
+                            <h4 class="mb-0">Title</h4> 
+                            <div class="mb-1 text-muted">companyName</div>                             
+                            <p class="card-text mb-auto">Description</p> 
+                        </div>                         
                     </div>                     
-                    <div class="form-group"> 
-                        <label for="exampleInputPassword1">Password</label>                         
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/> 
+                    <div class="card flex-md-row box-shadow h-md-250 flex-row mb-2"> 
+                        <div style="width: auto; height: auto; max-height: 160px; max-width: 160px; vertical-align: middle; min-width: 160px; min-height: 160px;" class="d-flex align-items-center"> 
+                            <img src="1386800206390.jpg" alt="Card image cap" class="img-fluid"> 
+                        </div>                         
+                        <div class="card-body flex-column d-flex align-items-start" style="max-height: 200px;"> 
+                            <h4 class="mb-0">Title</h4> 
+                            <div class="mb-1 text-muted">companyName</div>                             
+                            <p class="card-text mb-auto">Description</p> 
+                        </div>                         
                     </div>                     
-                    <div class="form-check"> 
-                        <label class="form-check-label"> 
-                            <input type="checkbox" class="form-check-input">Remember me
-                        </label>                         
-                    </div>                     
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>                     
-                </form>                 
+                </div>                 
+                <div class="col-md-3 offcanvas-collapse"> 
+                    <h3>Filter results</h3> 
+                    <p>Work in Progress!</p> 
+                </div>                 
             </div>             
         </main>         
-        <footer class="my-5 pt-5 text-muted text-center text-small"> 
-            <p class="mb-1">&copy; 2019 Auntie.cc</p> 
-            <ul class="list-inline"> 
-                <li class="list-inline-item"> 
-                    <a href="#">Privacy</a> 
-                </li>                 
-                <li class="list-inline-item"> 
-                    <a href="#">Terms</a> 
-                </li>                 
-                <li class="list-inline-item"> 
-                    <a href="#">Support</a> 
-                </li>                 
-            </ul>             
-        </footer>         
         <!-- Bootstrap core JavaScript
     ================================================== -->         
         <!-- Placed at the end of the document so the pages load faster -->         
