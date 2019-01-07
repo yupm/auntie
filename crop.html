@@ -8,9 +8,18 @@
         <meta name="author" content=""> 
         <title>Offcanvas template for Bootstrap</title>         
         <!-- Bootstrap core CSS -->         
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet"> 
+        <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet"> 
         <!-- Custom styles for this template -->         
-        <link href="auntie.css" rel="stylesheet"> 
+        <link href="assets/auntie.css" rel="stylesheet"> 
+        <link href="assets/css/jquery.flexdatalist.min.css" rel="stylesheet"> 
+        <style>#my-image,
+#use {
+    display: none;
+}
+
+.bootstrap-tagsinput {
+    width: 100%;
+}</style>
     </head>     
     <body class="bg-light"> 
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-danger"> 
@@ -58,7 +67,7 @@
         <div class="container"> 
             <div class="row" style="height: 30px;"></div>             
         </div>         
-        <main role="main" class="container" style="height: 100vh;" href="/login">
+        <main role="main" class="container">
             <div class="col-sm-6 offset-sm-3">
                 <h1><br>Upload item</h1>
                 <form action="/cloud/post" method="post" enctype="multipart/form-data">
@@ -75,9 +84,9 @@
                     </div>
                     <div class="form-group">Tags
                         <br>
-                        <input type="text" class="form-control" name="topics">
+                        <input id='taginput' type='text' placeholder='Additional info' class='flexdatalist form-control' data-min-length='1' multiple='multiple' name='itemTags'>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-danger">Upload!</button>
+                    <button id='subBtn' type="button" class="btn btn-lg btn-danger" onclick="submit()">Upload!</button>
                 </form>
                 <hr>
             </div>
@@ -101,13 +110,24 @@
         <!-- Placed at the end of the document so the pages load faster -->         
         <script src="assets/js/jquery.min.js"></script>         
         <script src="assets/js/popper.js"></script>         
-        <script src="bootstrap/js/bootstrap.min.js"></script>         
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>         
+        <script src="assets/js/jquery.flexdatalist.min.js"></script>
         <script>
         $(document).ready(function () {
             $('[data-toggle="offcanvas"]').on('click', function () {
                 $('.offcanvas-collapse').toggleClass('open');
             });
         });
+        
+         $(window).keydown(function(event){
+            if((event.keyCode == 13)) {
+                event.preventDefault();
+                return false;
+            }
+            });
+        });
+
+
     </script>         
     </body>     
 </html>
