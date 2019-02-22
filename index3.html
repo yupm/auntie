@@ -103,6 +103,11 @@
             $('[data-toggle="offcanvas"]').on('click', function () {
                 $('.offcanvas-collapse').toggleClass('open');
             });
+            
+            $('.dropdown-menu a').on('click', function() {
+              var getValue = $(this).text();
+              $('#dropdownMenuButton').text(getValue);
+            });
         });
     </script>         
     </body>     
